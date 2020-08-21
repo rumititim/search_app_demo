@@ -1,0 +1,4 @@
+demo_venv/*
+.vscode/launch.json
+*.pyc
+db.sqlite3
