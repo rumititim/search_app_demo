@@ -1,0 +1,18 @@
+version: '3'
+  
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+  web:
+    build: .
+    command: bash -c "
+        cd app
+        && python manage.py migrate
+        && python manage.py runserver 0.0.0.0:8010"
+    ports:
+      - "8010:8010"
+    depends_on:
+      - dynamodb-local
