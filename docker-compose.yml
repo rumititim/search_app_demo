@@ -8,6 +8,8 @@ services:
       - "8000:8000"
   web:
     build: .
+    environment:
+      - BING_SEARCH_V7_SUBSCRIPTION_KEY=${BING_SEARCH_V7_SUBSCRIPTION_KEY}
     command: bash -c "
         cd app
         && python manage.py migrate
